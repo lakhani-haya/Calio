@@ -15,25 +15,25 @@ export const createStyles = (isDarkMode) => StyleSheet.create({
     fontFamily: 'Courier New',
     letterSpacing: 2,
     textTransform: 'lowercase',
-  },
-  input: {
+  },  input: {
     borderWidth: 1,
     borderColor: isDarkMode ? '#444444' : '#bbbbbb',
     backgroundColor: isDarkMode ? '#111111' : '#f8f8f8',
     borderRadius: 0,
     padding: 16,
     marginBottom: 16,
+    marginHorizontal: 32,
     color: isDarkMode ? '#ffffff' : '#000000',
     fontFamily: 'Courier New',
     fontSize: 16,
     textTransform: 'lowercase',
     letterSpacing: 1,
-  },
-  total: {
+  },  total: {
     fontSize: 20,
     fontWeight: '300',
     marginTop: 32,
     marginBottom: 24,
+    marginHorizontal: 32,
     color: isDarkMode ? '#ffffff' : '#000000',
     textAlign: 'center',
     fontFamily: 'Courier New',
@@ -75,14 +75,14 @@ export const createStyles = (isDarkMode) => StyleSheet.create({
     height: 20,
     borderRadius: 10,
     backgroundColor: isDarkMode ? '#ffffff' : '#000000',
-  },
-  addButton: {
+  },  addButton: {
     backgroundColor: isDarkMode ? '#222222' : '#eeeeee',
     borderWidth: 1,
     borderColor: isDarkMode ? '#444444' : '#cccccc',
     paddingVertical: 16,
     paddingHorizontal: 24,
     marginTop: 8,
+    marginHorizontal: 32,
   },
   addButtonText: {
     color: isDarkMode ? '#ffffff' : '#000000',
