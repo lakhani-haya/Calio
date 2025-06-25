@@ -49,7 +49,14 @@
 ## App Demo
 
 ### 📱 App Screenshot
-> ![image](https://github.com/user-attachments/assets/413d151d-f50c-49b5-b80e-b202f41aab3f)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/413d151d-f50c-49b5-b80e-b202f41aab3f" alt="Calio Light Mode" width="300"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7525dd67-e3fe-42f4-b182-09f9a021413f" alt="Calio Dark Mode" width="300"/>
+</p>
+
 
 > Replace this with a clean screenshot of the app in dark/light mode.
 
