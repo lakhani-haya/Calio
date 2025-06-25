@@ -29,22 +29,16 @@ export default function App() {
     setMeals([...meals, newMeal]);
   };
 
-  const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);
-  return (
+  const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);  return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.toggleButton} onPress={toggleDarkMode}>
-        <Text style={styles.toggleButtonText}>
-          {isDarkMode ? 'light mode' : 'dark mode'}
-        </Text>
-      </TouchableOpacity>
-      <MealInput onAddMeal={addMeal} styles={styles} />
+      <MealInput onAddMeal={addMeal} styles={styles} toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       <TotalCalories total={totalCalories} styles={styles} />
       <MealList meals={meals} styles={styles} />
     </SafeAreaView>
   );
 }
 
-function MealInput({ onAddMeal, styles }) {
+function MealInput({ onAddMeal, styles, toggleDarkMode, isDarkMode }) {
   const [food, setFood] = useState('');
   const [calories, setCalories] = useState('');
 
@@ -57,7 +51,10 @@ function MealInput({ onAddMeal, styles }) {
 
   return (
     <View>
-      <Text style={styles.header}>calorie tracker</Text>
+      <Text style={styles.header}>calio</Text>
+      <TouchableOpacity style={styles.toggleButton} onPress={toggleDarkMode}>
+        <View style={styles.toggleButtonInner} />
+      </TouchableOpacity>
       <TextInput
         placeholder="food name"
         placeholderTextColor={styles.input.color}
@@ -73,7 +70,9 @@ function MealInput({ onAddMeal, styles }) {
         keyboardType="numeric"
         style={styles.input}
       />
-      <Button title="add meal" onPress={handleSubmit} />
+      <TouchableOpacity style={styles.addButton} onPress={handleSubmit}>
+        <Text style={styles.addButtonText}>add meal</Text>
+      </TouchableOpacity>
     </View>
   );
 }
