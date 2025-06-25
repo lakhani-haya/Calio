@@ -7,12 +7,15 @@ import {
   FlatList,
   SafeAreaView,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import { createStyles } from './styles';
 
 export default function App() {
   const [meals, setMeals] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [calorieGoal, setCalorieGoal] = useState('');
 
   const styles = createStyles(isDarkMode);
 
@@ -29,11 +32,29 @@ export default function App() {
     setMeals([...meals, newMeal]);
   };
 
-  const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);  return (
+  const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);
+  const goalValue = parseInt(calorieGoal);
+  const remainingCalories = goalValue ? goalValue - totalCalories : null;
+  return (
     <SafeAreaView style={styles.container}>
-      <MealInput onAddMeal={addMeal} styles={styles} toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-      <TotalCalories total={totalCalories} styles={styles} />
-      <MealList meals={meals} styles={styles} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={{ flex: 1 }}>
+          <MealInput 
+            onAddMeal={addMeal} 
+            styles={styles} 
+            toggleDarkMode={toggleDarkMode} 
+            isDarkMode={isDarkMode} 
+          />
+          <TotalCalories 
+            total={totalCalories} 
+            goal={calorieGoal} 
+            remaining={remainingCalories} 
+            onSetGoal={setCalorieGoal} 
+            styles={styles} 
+          />
+          <MealList meals={meals} styles={styles} />
+        </View>
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 }
@@ -77,8 +98,25 @@ function MealInput({ onAddMeal, styles, toggleDarkMode, isDarkMode }) {
   );
 }
 
-function TotalCalories({ total, styles }) {
-  return <Text style={styles.total}>total: {total} kcal</Text>;
+function TotalCalories({ total, goal, remaining, onSetGoal, styles }) {
+  return (
+    <View>
+      <TextInput
+        placeholder="set daily goal (kcal)"
+        placeholderTextColor={styles.goalInput.color}
+        value={goal}
+        onChangeText={onSetGoal}
+        keyboardType="numeric"
+        style={styles.goalInput}
+      />
+      <Text style={styles.total}>total: {total} kcal</Text>
+      {goal !== '' && (
+        <Text style={styles.total}>
+          goal: {goal} kcal | remaining: {remaining} kcal
+        </Text>
+      )}
+    </View>
+  );
 }
 
 function MealList({ meals, styles }) {
@@ -90,6 +128,7 @@ function MealList({ meals, styles }) {
         <Text style={styles.mealItem}>
           {item.food} - {item.calories} kcal
         </Text>
-      )}    />
+      )}
+    />
   );
 }
