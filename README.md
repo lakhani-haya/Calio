@@ -49,7 +49,8 @@
 ## App Demo
 
 ### 📱 App Screenshot
-> *(Insert screenshot here)*  
+> ![image](https://github.com/user-attachments/assets/413d151d-f50c-49b5-b80e-b202f41aab3f)
+
 > Replace this with a clean screenshot of the app in dark/light mode.
 
 ### 🔗 Live Preview on Expo Snack
