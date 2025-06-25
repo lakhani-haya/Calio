@@ -57,13 +57,6 @@
   <img src="https://github.com/user-attachments/assets/7525dd67-e3fe-42f4-b182-09f9a021413f" alt="Calio Dark Mode" width="300"/>
 </p>
 
-
-> Replace this with a clean screenshot of the app in dark/light mode.
-
-### 🔗 Live Preview on Expo Snack
-> *(Insert link here)*  
-> Add your Snack URL here for instant preview on web or mobile.
-
 ---
 
 ## Connect with Me
