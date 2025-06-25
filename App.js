@@ -69,10 +69,10 @@ function MealInput({ onAddMeal, styles, toggleDarkMode, isDarkMode }) {
     setFood('');
     setCalories('');
   };
-
   return (
     <View>
       <Text style={styles.header}>calio</Text>
+      <Text style={styles.subtitle}>{`{cali /ˈka.li/ — adj. (from Greek καλή) beautiful}`}</Text>
       <TouchableOpacity style={styles.toggleButton} onPress={toggleDarkMode}>
         <View style={styles.toggleButtonInner} />
       </TouchableOpacity>

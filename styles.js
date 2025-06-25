@@ -9,13 +9,23 @@ export const createStyles = (isDarkMode) => StyleSheet.create({
   },  header: {
     fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 24,
+    marginBottom: 8,
     color: isDarkMode ? '#ffffff' : '#000000',
     textAlign: 'center',
     fontFamily: 'Courier New',
     letterSpacing: 2,
     textTransform: 'lowercase',
-  },  input: {
+  },
+  subtitle: {
+    fontSize: 14,
+    fontWeight: '300',
+    marginBottom: 24,
+    color: isDarkMode ? '#888888' : '#666666',
+    textAlign: 'center',
+    fontFamily: 'Courier New',
+    letterSpacing: 0.5,
+    fontStyle: 'italic',
+  },input: {
     borderWidth: 1,
     borderColor: isDarkMode ? '#444444' : '#bbbbbb',
     backgroundColor: isDarkMode ? '#111111' : '#f8f8f8',
