@@ -11,11 +11,13 @@ import {
   Keyboard,
 } from 'react-native';
 import { createStyles } from './styles';
+import Analytics from './Analytics';
 
 export default function App() {
   const [meals, setMeals] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [calorieGoal, setCalorieGoal] = useState('');
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'analytics'
 
   const styles = createStyles(isDarkMode);
 
@@ -35,10 +37,35 @@ export default function App() {
   const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);
   const goalValue = parseInt(calorieGoal);
   const remainingCalories = goalValue ? goalValue - totalCalories : null;
+  
+  const navigateToPage = (page) => {
+    setCurrentPage(page);
+  };
+  
+  if (currentPage === 'analytics') {
+    return (
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity 
+          style={styles.navButton} 
+          onPress={() => navigateToPage('home')}
+        >
+          <Text style={styles.navButtonText}>← home</Text>
+        </TouchableOpacity>
+        <Analytics meals={meals} styles={styles} isDarkMode={isDarkMode} />
+      </SafeAreaView>
+    );
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={{ flex: 1 }}>
+          <TouchableOpacity 
+            style={styles.navButton} 
+            onPress={() => navigateToPage('analytics')}
+          >
+            <Text style={styles.navButtonText}>analytics →</Text>
+          </TouchableOpacity>
           <MealInput 
             onAddMeal={addMeal} 
             styles={styles} 
